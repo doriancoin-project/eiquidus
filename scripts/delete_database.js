@@ -63,6 +63,11 @@ function drop_collection(mongoose, colName, cb) {
 }
 
 function delete_prompt(cb) {
+  // Auto-confirm if EIQUIDUS_AUTO_CONFIRM env is set
+  if (process.env.EIQUIDUS_AUTO_CONFIRM === "true") {
+    return cb(true);
+  }
+
   preserve_claimaddress_prompt(function() {
     const rl = readline.createInterface({
       input: process.stdin,

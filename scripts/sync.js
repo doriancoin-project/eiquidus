@@ -1225,7 +1225,7 @@ if (lib.is_locked([database]) == false) {
 
               try {
                 // delete the database
-                execSync(`node ./scripts/delete_database.js ${mode}`, {stdio : 'inherit'});
+                execSync(`EIQUIDUS_AUTO_CONFIRM=$EIQUIDUS_AUTO_CONFIRM node ./scripts/delete_database.js ${mode}`, {stdio : 'inherit'});
               } catch (err) {
                 // delete_database.js was not successful, so exit
                 exit(1);
